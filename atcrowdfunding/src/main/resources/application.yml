@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    username: root
+    password: a
+    url: jdbc:mysql://localhost:3306/atcrowdfunding?characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+  mail:
+    host: smtp.qq.com
+    username: 2271020426@qq.com # 这里填写个人的qq邮箱
+    password: xjmmznpfrsnvebjh # 注：这里不是qq邮箱的密码，而是授权码
+    default-encoding: UTF-8
+mail:
+  fromMail:
+    addr: 2271020426@qq.com
+    
+server:
+  port: 80
+    
+logging: 
+  level:
+    com:
+      jt: debug
