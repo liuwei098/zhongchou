@@ -20,8 +20,11 @@ public class UserController {
 	private PermissionBiz pbiz;
 	@RequestMapping("main")
 	public String user(TUser user,HttpSession session){
-		List<TPermission> list=pbiz.findAllMenu();
-		session.setAttribute("menus", list);
+		
+		if(session.getAttribute("menus")==null){
+			List<TPermission> list=pbiz.findAllMenu();
+			session.setAttribute("menus", list);
+		}
 		return "user/main";
 	}
 }
