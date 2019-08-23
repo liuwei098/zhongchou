@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="GB18030">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -9,12 +9,70 @@
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/theme.css">
+	<script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="script/docs.min.js"></script>
+    <script src="script/back-to-top.js"></script>
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 	<style>
 #footer {
     padding: 15px 0;
     background: #fff;
     border-top: 1px solid #ddd;
     text-align: center;
+}
+#topcontrol {
+  color: #fff;
+  z-index: 99;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  background: #222;
+  position: relative;
+  right: 14px !important;
+  bottom: 11px !important;
+  border-radius: 3px !important;
+}
+
+#topcontrol:after {
+  /*top: -2px;*/
+  left: 8.5px;
+  content: "\f106";
+  position: absolute;
+  text-align: center;
+  font-family: FontAwesome;
+}
+
+#topcontrol:hover {
+    color: #fff;
+    background: #18ba9b;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.label-type, .label-status, .label-order {
+    background-color: #fff;
+    color: #f60;
+    padding : 5px;
+    border: 1px #f60 solid;
+}
+#typeList  :not(:first-child) {
+    margin-top:20px;
+}
+.label-txt {
+    margin:10px 10px;
+    border:1px solid #ddd;
+    padding : 4px;
+    font-size:14px;
+}
+.panel {
+    border-radius:0;
+}
+
+.progress-bar-default {
+    background-color: #ddd;
 }
 	</style>
   </head>
@@ -24,74 +82,284 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			  <div class="container">
 				<div class="navbar-header">
-				  <a class="navbar-brand" href="index.html" style="font-size:32px;">å°šç­¹ç½‘-åˆ›æ„äº§å“ä¼—ç­¹å¹³å°</a>
+				  <a class="navbar-brand" href="index.html" style="font-size:32px;">ÉĞ³ïÍø-´´Òâ²úÆ·ÖÚ³ïÆ½Ì¨</a>
 				</div>
             <div id="navbar" class="navbar-collapse collapse" style="float:right;">
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> å¼ ä¸‰<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> ÕÅÈı<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> ä¼šå‘˜ä¸­å¿ƒ</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-comment"></i> æ¶ˆæ¯</a></li>
+                    <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> »áÔ±ÖĞĞÄ</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-comment"></i> ÏûÏ¢</a></li>
                     <li class="divider"></li>
-                    <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> é€€å‡ºç³»ç»Ÿ</a></li>
+                    <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> ÍË³öÏµÍ³</a></li>
                   </ul>
                 </li>
               </ul>
             </div>
 			  </div>
 			</nav>
-
       </div>
     </div>
 
     <div class="container theme-showcase" role="main">
-      <div class="page-header">
-        <h1>å®åè®¤è¯ - ç”³è¯·</h1>
-      </div>
 
-		<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" ><a href="#"><span class="badge">1</span> åŸºæœ¬ä¿¡æ¯</a></li>
-		  <li role="presentation" class="active"><a href="#"><span class="badge">2</span> èµ„è´¨æ–‡ä»¶ä¸Šä¼ </a></li>
-		  <li role="presentation"><a href="#"><span class="badge">3</span> é‚®ç®±ç¡®è®¤</a></li>
-		  <li role="presentation"><a href="#"><span class="badge">4</span> ç”³è¯·ç¡®è®¤</a></li>
-		</ul>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a rel="nofollow" href="index.html"><i class="glyphicon glyphicon-home"></i> ÖÚ³ïÊ×Ò³</a>
+                                </li>
+                                <li >
+                                    <a rel="nofollow" href="projects.html"><i class="glyphicon glyphicon-th-large"></i> ÏîÄ¿×ÜÀÀ</a>
+                                </li>
+                                <li class="active">
+                                    <a rel="nofollow" href="javascript:;"><i class="glyphicon glyphicon-edit"></i> ·¢ÆğÏîÄ¿</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="minecrowdfunding.html"><i class="glyphicon glyphicon-user"></i> ÎÒµÄÖÚ³ï</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
         
-		<form role="form" style="margin-top:20px;">
-		  <div class="form-group">
-			<label for="exampleInputEmail1">æ‰‹æ‰§èº«ä»½è¯ç…§ç‰‡</label>
-			<input type="file" class="form-control" >
-            <br>
-            <img src="img/pic.jpg">
-		  </div>
-          <button type="button" onclick="window.location.href='apply.html'" class="btn btn-default">ä¸Šä¸€æ­¥</button>
-		  <button type="button" onclick="window.location.href='apply-2.html'"  class="btn btn-success">ä¸‹ä¸€æ­¥</button>
-		</form>
-		<hr>
-    </div> <!-- /container -->
+        
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="panel panel-default" >
+                        <div class="panel-heading" style="text-align:center;">
+                            <div class="container-fluid">
+                                <div class="row clearfix">
+                                    <div class="col-md-3 column">
+                                        <div class="progress" style="height:50px;border-radius:0;    position: absolute;width: 75%;right:49px;">
+                                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:50px;">
+                                            <div style="font-size:16px;margin-top:15px;">1. ÏîÄ¿¼°·¢ÆğÈËĞÅÏ¢</div>
+                                          </div>
+                                        </div>
+                                        <div style="right: 0;border:10px solid #ddd;border-left-color: #88b7d5;border-width: 25px;position: absolute;
+                                             border-left-color: rgba(92, 184, 92, 1);
+                                             border-top-color: rgba(92, 184, 92, 0);
+                                             border-bottom-color: rgba(92, 184, 92, 0);
+                                             border-right-color: rgba(92, 184, 92, 0);
+                                        ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 column">
+                                        <div class="progress" style="height:50px;border-radius:0;position: absolute;width: 75%;right:49px;">
+                                          <div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:50px;">
+                                            <div style="font-size:16px;margin-top:15px;">2. »Ø±¨ÉèÖÃ</div>
+                                          </div>
+                                        </div>
+                                        <div style="right: 0;border:10px solid #ddd;border-left-color: #88b7d5;border-width: 25px;position: absolute;
+                                             border-left-color: rgba(221, 221, 221, 1);
+                                             border-top-color: rgba(221, 221, 221, 0);
+                                             border-bottom-color: rgba(221, 221, 221, 0);
+                                             border-right-color: rgba(221, 221, 221, 0);
+                                        ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 column">
+                                        <div class="progress" style="height:50px;border-radius:0;position: absolute;width: 75%;right:49px;">
+                                          <div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:50px;">
+                                            <div style="font-size:16px;margin-top:15px;">3. È·ÈÏĞÅÏ¢</div>
+                                          </div>
+                                        </div>
+                                        <div style="right: 0;border:10px solid #ddd;border-left-color: #88b7d5;border-width: 25px;position: absolute;
+                                             border-left-color: rgba(221, 221, 221, 1);
+                                             border-top-color: rgba(221, 221, 221, 0);
+                                             border-bottom-color: rgba(221, 221, 221, 0);
+                                             border-right-color: rgba(221, 221, 221, 0);
+                                        ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 column">
+                                        <div class="progress" style="height:50px;border-radius:0;">
+                                          <div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;height:50px;">
+                                            <div style="font-size:16px;margin-top:15px;">4. Íê³É</div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+<div class="container-fluid">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<blockquote style="border-left: 5px solid #f60;color:#f60;padding: 0 0 0 20px;">
+				<b>
+					ÏîÄ¿¼°·¢ÆğÈËĞÅÏ¢
+				</b>
+			</blockquote>
+		</div>
+		<div class="col-md-12 column">
+			<div class="page-header" style="    border-bottom-style: dashed;">
+				<h3>
+					ÏîÄ¿ĞÅÏ¢
+				</h3>
+			</div>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">·ÖÀàĞÅÏ¢</label>
+                <div class="col-sm-10">
+                     <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> ¿Æ¼¼
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Éè¼Æ
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> ¹«Òæ
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Å©Òµ
+                    </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">±êÇ©</label>
+                <div class="col-sm-10">
+                    <ul style="list-style:none;padding-left:0;">
+                        <li style="margin:10px 0">[ÊÖ»ú]
+                            <span class="label-txt">ÊÖ»ú</span> <span class="label-txt">¿ì³ä</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span>
+                        </li>
+                        <li style="margin:10px 0">[ÊıÂë]
+                            <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span>
+                        </li>
+                        <li style="margin:10px 0">[µçÄÔ]
+                            <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span> <span class="label-txt">ÎÄ×Ö±êÇ©</span>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">ÏîÄ¿Ãû³Æ</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Ò»¾ä»°¼ò½é</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" rows="5"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">³ï×Ê½ğ¶î£¨Ôª£©</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" style="width:100px;" >
+                  <label class="control-label">³ï×Ê½ğ¶î²»ÄÜµÍÓÚ100Ôª,²»ÄÜ¸ßÓÚ1000000000Ôª</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">³ï×ÊÌìÊı£¨Ìì£©</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" style="width:100px;" >
+                  <label class="control-label">Ò»°ã10-90Ìì£¬½¨Òé30Ìì</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">ÏîÄ¿Í·Í¼</label>
+                <div class="col-sm-10">
+                  <button type="button" class="btn btn-primary btn-lg active">ÉÏ´«Í¼Æ¬</button>
+                  <label class="control-label">Í¼Æ¬ÉÏÎŞÎÄ×Ö,Ö§³Öjpg¡¢jpeg¡¢png¡¢gif¸ñÊ½£¬´óĞ¡²»³¬¹ı2M£¬½¨Òé³ß´ç£º740*457px</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">ÏîÄ¿ÏêÇé</label>
+                <div class="col-sm-10">
+                  <button type="button" class="btn btn-primary btn-lg active">ÉÏ´«Í¼Æ¬</button>
+                  <label class="control-label">Ö§³Öjpg¡¢jpeg¡¢png¡¢gif¸ñÊ½£¬´óĞ¡²»³¬¹ı2M£¬½¨Òé³ß´ç£º¿í740px</label>
+				  
+                </div>
+                 
+              </div>
+               <textarea path="content" rows="10" cols="80">
+						This is my textarea to be replaced with CKEditor.
+				</textarea>
+					  <script>
+						// Replace the <textarea id="editor1"> with a CKEditor
+						// instance, using default configuration.
+						CKEDITOR.replace( 'content' );
+               
+					</script>
+            </form>
+		</div>
+		<div class="col-md-12 column">
+			<div class="page-header" style="    border-bottom-style: dashed;">
+				<h3>
+					·¢ÆğÈËĞÅÏ¢
+				</h3>
+			</div>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">×ÔÎÒ½éÉÜ</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Ò»¾ä»°×ÔÎÒ½éÉÜ£¬²»³¬¹ı40×Ö">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">ÏêÏ¸×ÔÎÒ½éÉÜ</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" rows="5" placeholder="ÏòÖ§³ÖÕßÏêÏ¸½éÉÜÄã×Ô¼º»òÄãµÄÍÅ¶Ó¼°ÏîÄ¿±³¾°£¬ÈÃÖ§³ÖÕßÔÚ×î¶ÌÊ±¼äÄÚÁË½âÄã£¬²»³¬¹ı160×Ö"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">ÁªÏµµç»°</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="´ËĞÅÏ¢²»»áÏÔÊ¾ÔÚÏîÄ¿Ò³Ãæ">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">¿Í·şµç»°</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="´ËĞÅÏ¢ÏÔÊ¾ÔÚÏîÄ¿Ò³Ãæ">
+                </div>
+              </div>
+            </form>
+		</div>
+	</div>
+</div>
+                        </div>
+                        <div class="panel-footer" style="text-align:center;">
+                            <button type="button" class="btn  btn-warning btn-lg" onclick="window.location.href='start-step-2.html'">ÏÂÒ»²½</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
         <div class="container" style="margin-top:20px;">
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <div id="footer">
                         <div class="footerNav">
-                             <a rel="nofollow" href="http://www.atguigu.com">å…³äºæˆ‘ä»¬</a> | <a rel="nofollow" href="http://www.atguigu.com">æœåŠ¡æ¡æ¬¾</a> | <a rel="nofollow" href="http://www.atguigu.com">å…è´£å£°æ˜</a> | <a rel="nofollow" href="http://www.atguigu.com">ç½‘ç«™åœ°å›¾</a> | <a rel="nofollow" href="http://www.atguigu.com">è”ç³»æˆ‘ä»¬</a>
+                             <a rel="nofollow" href="http://www.layoutit.cn">¹ØÓÚÎÒÃÇ</a> | <a rel="nofollow" href="http://www.layoutit.cn">·şÎñÌõ¿î</a> | <a rel="nofollow" href="http://www.layoutit.cn">ÃâÔğÉùÃ÷</a> | <a rel="nofollow" href="http://www.layoutit.cn">ÍøÕ¾µØÍ¼</a> | <a rel="nofollow" href="http://www.layoutit.cn">ÁªÏµÎÒÃÇ</a>
                         </div>
                         <div class="copyRight">
-                            Copyright ?2017-2017 atguigu.com ç‰ˆæƒæ‰€æœ‰
+                            Copyright ?2017-2017layoutit.cn °æÈ¨ËùÓĞ
                         </div>
                     </div>
                     
                 </div>
             </div>
         </div>
-    <script src="jquery/jquery-2.1.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="script/docs.min.js"></script>
+      
+    </div> <!-- /container -->
+ 
 	<script>
-        $('#myTab a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        });        
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 	</script>
   </body>
 </html>
