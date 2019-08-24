@@ -65,7 +65,7 @@
                 <c:forEach items="${ result.obj}" var="item" varStatus="status">
                 	<tr>
 	                  <td>${status.index+1+ (param.pageNum==null?0: (param.pageNum-1)*5) }</td>
-					  <td><input type="checkbox" class="checkRole" onclick="addDeleteRole(${item.id})"></td>
+					  <td><input type="checkbox" class="checkRole" onclick="addDeleteRole(${item.id})" value="${item.id }"></td>
 	                  <td>${item.name }</td>
 	                  <td>
 					      <button type="button" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>
@@ -118,16 +118,45 @@
             function DeleteSelectedRole(){
             	var a=$(".checkRole");
             	for(var i=0;i<a.length;i++){
-            		if(!a[i].checked){
-            			ids=id
+            		if(a[i].checked){
+            			ids=ids+a[i].value+",";
             		}
             	}
+            /* 	QC - 品质控制
+            	CMO / CMS - 配置管理员 */
+           		$.post(
+	              		"role_deleteRole",
+	              		{"ids":ids},
+	              		function(result){
+	              			//alert(result.code);
+	              			//成功用eaayui提示用户成功
+	              			if(result.code==200){
+	              				$.messager.show({  
+	              			        title:'删除成功',  
+	              			        msg:result.message,  
+	              			        showType:'show',
+	              			        timeout:2000
+	              			   }); 
+	              				window.location.href="role?pageNum=${param.pageNum}";
+	              			}else{
+	              				//失败用layer插件提示用户失败
+	              				layer.msg('用户名或者密码错误', {
+	              			    	    time: 5000, //20s后自动关闭
+	              			    	    icon:5,
+	              			    	   /*  shift:6, */
+	              			    	    btn: ['明白了', '知道了']
+	              			    });
+	              			}
+	              		},
+	              		"json"
+	             );
+            	
             }
      	 /*       删除单个记录 */
             function deleteRole(id){
             	$.post(
             		"role_deleteRole",
-            		{"id":id},
+            		{"ids":id},
             		function(result){
             			window.location.href="role?pageNum=${param.pageNum}";
             			//成功用eaayui提示用户成功
@@ -147,7 +176,8 @@
             			    	    btn: ['明白了', '知道了']
             			    	 });
             			}
-            		}
+            		},
+            		"json"
             	);
             }
      	 

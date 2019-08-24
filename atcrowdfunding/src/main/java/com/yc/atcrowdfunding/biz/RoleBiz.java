@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -32,12 +32,26 @@ public class RoleBiz {
 		int total=(int) page.getTotal();
 		result.setPage(pageNum);
 		result.setTotal(total);
+		//判断当前页删除之后是否没有数据了，如果没有，回到前一页
+		if(pageNum!=1){
+			if(total%pageSize==0){
+				page=PageHelper.startPage(pageNum-1, pageSize);
+				list= trm.selectByExample(example);
+				total=(int) page.getTotal();
+				result.setTotal((int) total);
+				result.setPage(pageNum-1);
+			}
+		}
 		result.setTotalPage(   total%pageSize==0 ? total/pageSize:((total/pageSize)+1) );
 		result.setObj(list);
 		return result;
 	}
-	public void deleteById(int id) {
-		trm.deleteByPrimaryKey(id);
-		
+	
+	@Transactional
+	public void deleteById(String ids) {
+		String s[]=ids.split(",");
+		for(String id:s){
+			trm.deleteByPrimaryKey(Integer.parseInt(id));
+		}
 	}
 }

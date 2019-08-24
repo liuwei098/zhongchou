@@ -25,10 +25,10 @@ public class RoleController {
 	
 	@RequestMapping("role_deleteRole")
 	@ResponseBody
-	public Result deleteRole(int id){
+	public Result deleteRole(String ids){
 		Result result=new Result();
 		try{
-			rbiz.deleteById(id);
+			//rbiz.deleteById(ids);
 			result.setCode(200);
 			result.setMessage("删除成功");
 		}catch(RuntimeException e){
