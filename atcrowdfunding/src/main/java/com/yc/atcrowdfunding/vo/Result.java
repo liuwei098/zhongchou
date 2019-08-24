@@ -1,13 +1,9 @@
 package com.yc.atcrowdfunding.vo;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
 
 //第三方依赖，以下注解生成set get方法
-@Getter
-@Setter
-@ToString
+
 public class Result {
 	private int code;
 	private String message;
@@ -57,6 +53,11 @@ public class Result {
 	}
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
+	}
+	@Override
+	public String toString() {
+		return "Result [code=" + code + ", message=" + message + ", obj=" + obj + ", page=" + page + ", pageSize="
+				+ pageSize + ", total=" + total + ", totalPage=" + totalPage + "]";
 	}
 	
 }

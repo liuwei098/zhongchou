@@ -28,7 +28,7 @@ public class PermissionBiz {
 		List<TPermission> root = new ArrayList<TPermission>();
 		List<TPermission> childredPermissons = tm.selectByExample(null);
 		System.out.println(childredPermissons);
-		Map<Integer,TPermission> map = new HashMap<Integer,TPermission>();//100
+		Map<Integer,TPermission> map = new HashMap<Integer,TPermission>();
 		for (TPermission innerTPermission : childredPermissons) {
 			map.put(innerTPermission.getId(), innerTPermission);
 		}

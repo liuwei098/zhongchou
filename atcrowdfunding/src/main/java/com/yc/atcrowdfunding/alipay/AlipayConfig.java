@@ -47,7 +47,7 @@ public class AlipayConfig {
     		+ "rR2jHaZPJ0Z543f78Qov+strj2+/XHNhSX2+gOeEiTuI+wIDAQAB";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://39.97.118.121:8080/myRes/notify_url.jsp";
+	public static String notify_url = "http://127.0.0.1:8080/myRes/notify_url.jsp";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
 	public static String return_url = "http://39.97.118.121:8080/myRes/return_url.jsp";

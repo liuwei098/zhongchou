@@ -16,7 +16,7 @@ import com.yc.atcrowdfunding.dao.TRoleMapper;
 import com.yc.atcrowdfunding.vo.Result;
 
 @Service
-@MapperScan("com.yc")
+@MapperScan("com.yc.atcrowdfunding")
 public class RoleBiz {
 	@Resource
 	private TRoleMapper trm;

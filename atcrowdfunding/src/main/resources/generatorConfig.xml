@@ -38,9 +38,7 @@
         	<generatedKey column="id" sqlStatement="MYSQL" identity="true"/>
         </table>
         
-        <table tableName="t_member">
-        	<generatedKey column="id" sqlStatement="MYSQL" identity="true"/>
-        </table>
+        
         
     </context>
 </generatorConfiguration>
