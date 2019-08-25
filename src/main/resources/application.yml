@@ -1,0 +1,70 @@
+# JSP配置  tab==》 空格  禁止使用 tab
+spring:
+   mvc:
+      view:
+         prefix: WEB-INF/jsp/
+         suffix: .jsp
+      
+   datasource:
+      url: jdbc:mysql://127.0.0.1:3306/atcrowdfunding?characterEncoding=utf-8
+      username: root
+      password: a
+      driver-class-name: com.mysql.jdbc.Driver
+
+   http:
+      encoding:
+         force: true
+         charset: UTF-8
+         enabled: true
+         
+   resources:
+     staticLocations:
+       - classpath:/static/
+       - file:/D:/blog/
+
+
+   # 邮件服务配置
+   mail: 
+      # 邮箱服务器地址
+      host: smtp.qq.com
+      # 用户名
+      username: 2271020426@qq.com
+      # 发送密码
+      password: xjmmznpfrsnvebjh
+      # 默认字符集编码
+      default-encoding: UTF-8
+      
+      
+      
+      
+      
+      
+# 发送地址
+mail:
+   fromMail:
+      addr: 2271020426@qq.com
+      
+      
+
+# 日志输出
+logging:
+   level:
+      com:
+         yc: debug
+
+
+
+
+ # 配置端口为 80
+server:
+   port: 80 
+   tomcat:
+      url-encoding: UTF-8  
+      
+      
+      
+      
+      
+      
+      
+      

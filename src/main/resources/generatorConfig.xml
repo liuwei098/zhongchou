@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+<!-- mybatis-generator:generate -->
+    <!--数据库驱动-->
+    <!-- <classPathEntry    location="C:\eeworkplace\mybatis-generator-core-1.3.5.jar"/> -->
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+       <!--  <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator> -->
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+	        connectionURL="jdbc:mysql://localhost:3306/atcrowdfunding?characterEncoding=utf-8" 
+	        userId="root" 
+	        password="a">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.yc.atcrowdfunding.bean" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="com.yc.atcrowdfunding.dao" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.yc.atcrowdfunding.dao" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--生成对应表及类名-->
+        <table tableName="t_project">
+        	<generatedKey column="id" sqlStatement="MYSQL" identity="true"/>
+        </table>
+        
+        
+        
+    </context>
+</generatorConfiguration>
