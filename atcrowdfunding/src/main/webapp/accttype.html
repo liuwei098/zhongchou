@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/theme.css">
+	<style>
+#footer {
+    padding: 15px 0;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+.seltype {
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 10px;
+    color: red;
+}
+	</style>
+  </head>
+  <body>
+ <div class="navbar-wrapper">
+      <div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			  <div class="container">
+				<div class="navbar-header">
+				  <a class="navbar-brand" href="index.html" style="font-size:32px;">�г���-�����Ʒ�ڳ�ƽ̨</a>
+				</div>
+            <div id="navbar" class="navbar-collapse collapse" style="float:right;">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> ����<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> ��Ա����</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-comment"></i> ��Ϣ</a></li>
+                    <li class="divider"></li>
+                    <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> �˳�ϵͳ</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+			  </div>
+			</nav>
+
+      </div>
+    </div>
+
+    <div class="container theme-showcase" role="main">
+
+
+
+
+      <div class="page-header">
+        <h1>ʵ����֤ - �˻�����ѡ��</h1>
+      </div>
+	  <div style="padding-top:10px;">
+		<div class="row">
+      <div class="col-xs-6 col-md-3">
+      
+      <h2>��ҵ��˾</h2>
+        <a href="#" class="thumbnail">
+          
+          <img alt="100%x180" src="img/services-box1.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <h2>���幤�̻�</h2>
+        <a href="#" class="thumbnail">
+          <img alt="100%x180" src="img/services-box2.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <h2>���˾�Ӫ</h2>
+        <a href="#" class="thumbnail">
+          <img alt="100%x180" src="img/services-box3.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <h2>��������Ӫ����֯</h2>
+        <a href="#" class="thumbnail">
+          <img alt="100%x180" src="img/services-box4.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+        </a>
+      </div>
+    </div>
+	<button type="button" class="btn btn-danger btn-lg btn-block" onclick="window.location.href='apply.html'">��֤����</button>
+    </div> <!-- /container -->
+      <!-- /END THE FEATURETTES -->
+
+
+        <div class="container" style="margin-top:20px;">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div id="footer">
+                        <div class="footerNav">
+                             <a rel="nofollow" href="http://www.atguigu.com">��������</a> | <a rel="nofollow" href="http://www.atguigu.com">��������</a> | <a rel="nofollow" href="http://www.atguigu.com">��������</a> | <a rel="nofollow" href="http://www.atguigu.com">��վ��ͼ</a> | <a rel="nofollow" href="http://www.atguigu.com">��ϵ����</a>
+                        </div>
+                        <div class="copyRight">
+                            Copyright ?2017-2017atguigu.com ��Ȩ����
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="script/docs.min.js"></script>
+	<script>
+    $(".thumbnail").click(function(){
+        $('.seltype').remove();
+        $(this).prepend('<div class="glyphicon glyphicon-ok seltype"></div>');
+    });
+	</script>
+  </body>
+</html>
